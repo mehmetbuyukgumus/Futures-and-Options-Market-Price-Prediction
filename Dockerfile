@@ -6,5 +6,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-# Uygulamanın çalıştırılma komutu
 CMD ["python3", "run.py"]
