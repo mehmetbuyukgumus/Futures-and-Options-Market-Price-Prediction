@@ -5,4 +5,3 @@ fi
 
 source myenv/bin/activate
 pip install -r requirements.txt
-python3 src/run.py

@@ -9,7 +9,7 @@ import pandas as pd
 
 
 def prep_data_of_model():
-    data = historical_prices("PGSUS.IS", "THYAO.IS", "2008-05-15", "2024-09-06")
+    data = historical_prices("PGSUS.IS", "THYAO.IS", "2020-07-08", "2024-09-09")
     data.dropna(inplace=True)
     return data
 
