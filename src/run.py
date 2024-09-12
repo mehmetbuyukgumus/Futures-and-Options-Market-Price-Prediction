@@ -4,7 +4,7 @@ filterwarnings("ignore")
 
 
 def main():
-    current_price = (input("Baz Fiyatı Giriniz: "))
+    current_price = input("Baz Fiyatı Giriniz: ")
     target_price = prediction(current_price)
     print(target_price)
 
