@@ -5,11 +5,12 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from joblib import dump
+import datetime as dt
 import pandas as pd
 
 
 def prep_data_of_model():
-    data = historical_prices("PGSUS.IS", "THYAO.IS", "2020-07-08", "2024-09-11")
+    data = historical_prices("PGSUS.IS", "THYAO.IS", "2020-07-08", dt.datetime.now().date())
     data.dropna(inplace=True)
     return data
 
