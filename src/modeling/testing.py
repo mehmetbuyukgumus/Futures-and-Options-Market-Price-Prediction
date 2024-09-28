@@ -5,12 +5,13 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from joblib import dump
+from modeling.pairs import pairs
 import datetime as dt
 import pandas as pd
 
 
-def prep_data_of_model():
-    data = historical_prices("PGSUS.IS", "THYAO.IS", "2020-07-08", dt.datetime.now().date())
+def prep_data_of_model(comp1, comp2):
+    data = historical_prices(comp1, comp2, "2020-07-08", dt.datetime.now().date())
     data.dropna(inplace=True)
     return data
 
@@ -91,12 +92,13 @@ def grid_seach_cv(X, y, X_train, X_test, y_train, y_test, model, name, regressor
     return result_new
 
 
-data = prep_data_of_model()
-X, y, X_train, X_test, y_train, y_test = test_split_data(data)
-# X_train, X_test = scaler(X_train, X_test)
-result, model, name, regressor, param = testing_result_of_model(X_train, X_test, y_train, y_test)
-result_new = grid_seach_cv(X, y, X_train, X_test, y_train, y_test, model, name, regressor, param)
+for i in range(len(pairs)):
+    data = prep_data_of_model(pairs[i][0], pairs[i][1])
+    X, y, X_train, X_test, y_train, y_test = test_split_data(data)
+    # X_train, X_test = scaler(X_train, X_test)
+    result, model, name, regressor, param = testing_result_of_model(X_train, X_test, y_train, y_test)
+    result_new = grid_seach_cv(X, y, X_train, X_test, y_train, y_test, model, name, regressor, param)
 
-print(pd.concat([result, result_new], axis=1))
-dump(model, "src/modeling/model-file.joblib")
+    print(pd.concat([result, result_new], axis=1))
+    dump(model, f"models_joblib_files/{pairs[i][0]}-{pairs[i][1]}-model-file.joblib")
 
