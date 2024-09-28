@@ -2,4 +2,6 @@ myenv
 myenv/
 catboost_info
 .DS_Store
+__pycache__
+src/modeling/__pycache__
 
