@@ -93,12 +93,12 @@ def grid_seach_cv(X, y, X_train, X_test, y_train, y_test, model, name, regressor
 
 
 for i in range(len(pairs)):
-    data = prep_data_of_model(pairs[i][0], pairs[i][1])
+    data = prep_data_of_model(f"{pairs[i][0]}.IS", f"{pairs[i][1]}.IS")
     X, y, X_train, X_test, y_train, y_test = test_split_data(data)
     # X_train, X_test = scaler(X_train, X_test)
     result, model, name, regressor, param = testing_result_of_model(X_train, X_test, y_train, y_test)
     result_new = grid_seach_cv(X, y, X_train, X_test, y_train, y_test, model, name, regressor, param)
 
     print(pd.concat([result, result_new], axis=1))
-    dump(model, f"models_joblib_files/{pairs[i][0]}-{pairs[i][1]}-model-file.joblib")
+    dump(model, f"src/models_joblib_files/{pairs[i][0]}-{pairs[i][1]}-model-file.joblib")
 
