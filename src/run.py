@@ -4,12 +4,8 @@ filterwarnings("ignore")
 
 
 def main():
-    current_price = input("Baz Fiyatı Giriniz: ")
-    target_price = prediction(current_price)
-    print(target_price)
+    prediction()
 
 
 if __name__ == "__main__":
-   while True:
         main()
-            
