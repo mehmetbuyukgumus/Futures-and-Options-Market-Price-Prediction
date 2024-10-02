@@ -3,3 +3,4 @@ myenv/
 catboost_info
 .DS_Store
 __pycache__
+~$output.xlsx
