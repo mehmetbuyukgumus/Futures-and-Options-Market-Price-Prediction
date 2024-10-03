@@ -5,3 +5,7 @@ fi
 
 source myenv/bin/activate
 pip install -r requirements.txt
+
+#For run
+
+python3 src/run.py
